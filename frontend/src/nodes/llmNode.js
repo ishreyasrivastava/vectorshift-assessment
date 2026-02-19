@@ -1,34 +1,47 @@
 // llmNode.js
+// Refactored to use BaseNode for consistency and reduced code duplication
 
-import { Handle, Position } from 'reactflow';
+import { BaseNode } from './BaseNode';
+import { Position } from 'reactflow';
 
 export const LLMNode = ({ id, data }) => {
+  const fields = [
+    {
+      name: 'description',
+      type: 'static',
+      text: 'This is an LLM.'
+    }
+  ];
+
+  const handles = [
+    {
+      id: `${id}-system`,
+      type: 'target',
+      position: Position.Left,
+      style: { top: `${100/3}%` }
+    },
+    {
+      id: `${id}-prompt`,
+      type: 'target',
+      position: Position.Left,
+      style: { top: `${200/3}%` }
+    },
+    {
+      id: `${id}-response`,
+      type: 'source',
+      position: Position.Right,
+      style: { top: '50%' }
+    }
+  ];
 
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={`${id}-system`}
-        style={{top: `${100/3}%`}}
-      />
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={`${id}-prompt`}
-        style={{top: `${200/3}%`}}
-      />
-      <div>
-        <span>LLM</span>
-      </div>
-      <div>
-        <span>This is a LLM.</span>
-      </div>
-      <Handle
-        type="source"
-        position={Position.Right}
-        id={`${id}-response`}
-      />
-    </div>
+    <BaseNode
+      id={id}
+      data={data}
+      title="LLM"
+      fields={fields}
+      handles={handles}
+      nodeColor="#a855f7"
+    />
   );
-}
+};
