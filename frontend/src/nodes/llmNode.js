@@ -1,5 +1,4 @@
 // llmNode.js
-// Refactored to use BaseNode for consistency and reduced code duplication
 
 import { BaseNode } from './BaseNode';
 import { Position } from 'reactflow';

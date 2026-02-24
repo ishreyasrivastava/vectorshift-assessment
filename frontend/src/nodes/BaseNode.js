@@ -13,7 +13,6 @@ export const BaseNode = ({
   nodeColor = '#6366f1',
   minWidth = 200 
 }) => {
-  // Initialize field values from data or defaults
   const [fieldValues, setFieldValues] = useState(() => {
     const initialValues = {};
     fields.forEach(field => {
@@ -29,7 +28,6 @@ export const BaseNode = ({
     }));
   };
 
-  // Render different input types
   const renderField = (field) => {
     const value = fieldValues[field.name];
     
@@ -96,6 +94,8 @@ export const BaseNode = ({
     }
   };
 
+  // TODO: could add validation per field type
+
   return (
     <div className="base-node" style={{ minWidth }}>
       <div className="node-header" style={{ backgroundColor: nodeColor }}>
@@ -113,7 +113,6 @@ export const BaseNode = ({
         ))}
       </div>
       
-      {/* Handles */}
       {handles.map(handle => (
         <Handle
           key={handle.id}
@@ -126,6 +125,4 @@ export const BaseNode = ({
       ))}
     </div>
   );
-
-  // TODO: could add validation per field type
 };

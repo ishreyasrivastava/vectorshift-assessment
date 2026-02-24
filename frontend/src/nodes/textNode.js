@@ -10,7 +10,6 @@ export const TextNode = ({ id, data }) => {
   // this regex took me a while to get right
   const variableRegex = /\{\{\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\}\}/g;
 
-  // Extract variables from text with auto-resizing
   const variables = useMemo(() => {
     const matches = [];
     let match;
@@ -23,18 +22,16 @@ export const TextNode = ({ id, data }) => {
     return [...new Set(matches)];
   }, [currText]);
 
-  // Auto-resize textarea based on content
   const handleTextChange = useCallback((e) => {
     setCurrText(e.target.value);
     
-    // Auto-resize using scrollHeight
+    // auto-resize using scrollHeight
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
     }
   }, []);
 
-  // Initial resize on mount
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
@@ -42,7 +39,6 @@ export const TextNode = ({ id, data }) => {
     }
   }, [currText]);
 
-  // Calculate dynamic width based on content (200-400px)
   const nodeWidth = Math.min(400, Math.max(200, currText.length * 6 + 100));
 
   return (
@@ -75,7 +71,6 @@ export const TextNode = ({ id, data }) => {
         </div>
       </div>
 
-      {/* Dynamic target handles for each detected variable */}
       {variables.map((variable, index) => (
         <Handle
           key={`${id}-${variable}`}
@@ -90,7 +85,6 @@ export const TextNode = ({ id, data }) => {
         />
       ))}
 
-      {/* Source handle */}
       <Handle
         type="source"
         position={Position.Right}

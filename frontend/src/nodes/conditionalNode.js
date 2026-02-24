@@ -23,7 +23,6 @@ export const ConditionalNode = ({ id, data }) => {
         </div>
       </div>
 
-      {/* Input handle */}
       <Handle
         type="target"
         position={Position.Left}
@@ -31,7 +30,6 @@ export const ConditionalNode = ({ id, data }) => {
         className="node-handle target"
       />
 
-      {/* True output handle */}
       <Handle
         type="source"
         position={Position.Right}
@@ -43,7 +41,6 @@ export const ConditionalNode = ({ id, data }) => {
         className="node-handle source"
       />
       
-      {/* False output handle */}
       <Handle
         type="source"
         position={Position.Right}
@@ -55,7 +52,7 @@ export const ConditionalNode = ({ id, data }) => {
         className="node-handle source"
       />
 
-      {/* Labels for T/F outputs */}
+      {/* T/F labels */}
       <div style={{
         position: 'absolute',
         right: '-25px',
