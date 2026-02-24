@@ -26,7 +26,7 @@ A React-based pipeline builder with a FastAPI backend for DAG validation. Built 
 ## Bugs Found in Starter Code
 
 1. **`100wv` typo** — `ui.js` had `width: 100wv` instead of `100vw`, breaking the full-width layout.
-2. **Missing node IDs in handles** — Handle IDs weren't namespaced by node ID, causing connection issues when multiple nodes of the same type existed. Fixed by prefixing handle IDs with `${id}-`.
+2. **Missing `nodeIDs` in store** — `store.js` referenced `get().nodeIDs` but never initialized it in the state object, causing undefined behavior on first node creation.
 
 ## Running Locally
 
