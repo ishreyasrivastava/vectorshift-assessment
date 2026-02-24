@@ -10,6 +10,10 @@ import { LLMNode } from './nodes/llmNode';
 import { OutputNode } from './nodes/outputNode';
 import { TextNode } from './nodes/textNode';
 import { TransformNode } from './nodes/transformNode';
+import { NoteNode } from './nodes/noteNode';
+import { MergeNode } from './nodes/mergeNode';
+import { ConditionalNode } from './nodes/conditionalNode';
+import { APINode } from './nodes/apiNode';
 
 import 'reactflow/dist/style.css';
 
@@ -21,6 +25,10 @@ const nodeTypes = {
   customOutput: OutputNode,
   text: TextNode,
   transform: TransformNode,
+  note: NoteNode,
+  merge: MergeNode,
+  conditional: ConditionalNode,
+  api: APINode,
 };
 
 const selector = (state) => ({
@@ -90,7 +98,7 @@ export const PipelineUI = () => {
 
     return (
         <>
-        <div ref={reactFlowWrapper} style={{width: '100vw', height: '70vh'}}>
+        <div ref={reactFlowWrapper} style={{width: '100vw', height: '70vh'}}> {/* fixed: was '100wv' in starter */}
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
