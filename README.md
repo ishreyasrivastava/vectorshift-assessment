@@ -19,7 +19,7 @@ A React-based pipeline builder with a FastAPI backend for DAG validation. Built 
 
 2. **Kahn's algorithm over DFS cycle detection** — Both are O(V+E), but Kahn's naturally produces a topological ordering which could be useful for future pipeline execution order. Also avoids recursion depth issues on large graphs.
 
-3. **Client-side variable parsing** — Variables are detected in the browser rather than sent to the backend. This keeps the UI responsive (no network round-trip for handle updates) at the cost of duplicating regex logic if the backend ever needs it.
+3. **Client-side variable parsing** — Variables are detected in the browser rather than sent to the backend. This keeps the UI responsive (no network round-trip for handle updates) at the cost of duplicating regex logic if the backend ever needs it. The trickiest part was getting the regex to handle edge cases like `{{}}` (empty) and `{{ spaced }}` without breaking the handle generation.
 
 4. **Alert-based results** — Used `alert()` for pipeline analysis results for simplicity. A production version would use a modal or toast notification system.
 
