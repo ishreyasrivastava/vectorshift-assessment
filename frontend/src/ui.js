@@ -9,6 +9,7 @@ import { InputNode } from './nodes/inputNode';
 import { LLMNode } from './nodes/llmNode';
 import { OutputNode } from './nodes/outputNode';
 import { TextNode } from './nodes/textNode';
+import { TransformNode } from './nodes/transformNode';
 
 import 'reactflow/dist/style.css';
 
@@ -19,6 +20,7 @@ const nodeTypes = {
   llm: LLMNode,
   customOutput: OutputNode,
   text: TextNode,
+  transform: TransformNode,
 };
 
 const selector = (state) => ({
@@ -88,7 +90,7 @@ export const PipelineUI = () => {
 
     return (
         <>
-        <div ref={reactFlowWrapper} style={{width: '100wv', height: '70vh'}}>
+        <div ref={reactFlowWrapper} style={{width: '100vw', height: '70vh'}}>
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
