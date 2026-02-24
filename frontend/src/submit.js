@@ -19,6 +19,8 @@ export const SubmitButton = () => {
             })),
         };
 
+        console.log('Submitting pipeline:', nodes.length, 'nodes,', edges.length, 'edges');
+
         try {
             const response = await fetch('http://localhost:8000/pipelines/parse', {
                 method: 'POST',
